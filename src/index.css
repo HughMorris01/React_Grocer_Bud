@@ -301,6 +301,7 @@ form h4 {
 }
 .single-item p {
   letter-spacing: var(--letterSpacing);
+  text-transform: capitalize;
 }
 
 .remove-btn {
@@ -312,4 +313,8 @@ form h4 {
 
 .Toastify__toast {
   text-transform: capitalize;
+}
+
+.completed {
+  text-decoration: line-through;
 }

@@ -1,35 +1,21 @@
 import { useEffect, useState } from 'react';
 
-const SingleItem = ({ item, deleteItem }) => {
-  const [isChecked, setIsChecked] = useState(false);
-
-  useEffect(() => {
-    if (item.completed) {
-      setIsChecked(true);
-    }
-  }, []);
-
-  const handleCheck = () => {
-    if (!isChecked) {
-      setIsChecked(true);
-    } else {
-      setIsChecked(false);
-    }
-  };
-
-  const handleClick = () => {
-    deleteItem(item.id);
-  };
-
+const SingleItem = ({ item, deleteItem, editItem }) => {
   return (
     <div className="single-item">
       <input
         type="checkbox"
-        checked={isChecked && 'checked'}
-        onChange={handleCheck}
+        checked={item.completed}
+        onChange={() => {
+          editItem(item.id);
+        }}
       />
-      <p>{item.name}</p>
-      <button type="button" className="remove-btn" onClick={handleClick}>
+      <p className={item.completed ? 'completed' : undefined}>{item.name}</p>
+      <button
+        type="button"
+        className="btn remove-btn"
+        onClick={() => deleteItem(item.id)}
+      >
         Remove
       </button>
     </div>

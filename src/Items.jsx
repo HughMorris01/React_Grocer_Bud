@@ -1,14 +1,19 @@
 import SingleItem from './SingleItem';
-import { nanoid } from 'nanoid';
 
-const Items = ({ items, deleteItem }) => {
+const Items = ({ items, deleteItem, editItem }) => {
   return (
     <section className="items">
-      {items.map((item) => {
-        return (
-          <SingleItem key={nanoid()} item={item} deleteItem={deleteItem} />
-        );
-      })}
+      {items &&
+        items.map((item) => {
+          return (
+            <SingleItem
+              key={item.id}
+              item={item}
+              deleteItem={deleteItem}
+              editItem={editItem}
+            />
+          );
+        })}
     </section>
   );
 };
